@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Météo Api </title>
+</head>
+<body>
+    <div class="base">
+        <video autoplay loop src="Vidéo de Pressmaster provenant de Pexels"></video>
+        <div class="recherche">
+           <input id ="inputRecherche" type="text" placeholder="Choisir une  ville  pour afficher sa météo" name="villeinput"> 
+           <button id ="afficher"> Afficher</button>
+        </div>
+        <div id ="ville">
+            <h1 id="maville"></h1>
+            <p id="infoMaville">Cette ville se trouve à la latitude de <span id ="lat"></span><br> et de la longitude de <span id ="long"></span><br>Le code du pays est : <span id ="pays"></span></p>
+        </div>
+        <div id ="temps">
+            <div class="météoDuJour">
+               
+            </div>
+            <div  class="température"></div>
+            <div  class="température"></div>
+            <div  class="température"></div>
+        </div>
+
+
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>
