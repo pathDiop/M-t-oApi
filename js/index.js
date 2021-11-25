@@ -3,21 +3,17 @@ let inputRecherche = document.querySelector('#inputRecherche').value;
 let afficher = document.querySelector('#afficher');
 let maville = document.querySelector('#maville');
 let infoMaville = document.querySelector('#infoMaville');
+let meteo5j = document.querySelector('#meteo5j');
 let lat = document.querySelector('#lat');
 let long = document.querySelector('#long');
 let pays = document.querySelector('#pays');
-let météoDuJour = document.querySelector('#météoDuJour');
-//let key = 'ae3e8b28d061817c1890064e35ccfe46';
-//let town = inputRecherche.Value;
-   
-    console.log(inputRecherche);
 /**
  * fonction sélectionner ville
  */
 const selectionnerVille = (event) =>{
    //let keyP =3a2ea38cb56c448cf5d6ee86eaa67cf5;
     
-    let url ="https://api.openweathermap.org/data/2.5/forecast?q="+ inputRecherche +"&appid=97f55fd2ae2ca497a45766b111b0ff0e"
+    let url ="https://api.openweathermap.org/data/2.5/forecast?q="+ inputRecherche +" &units=metric&appid=97f55fd2ae2ca497a45766b111b0ff0e"
     console.log("c'est good");
     fetch(url)
     .then(function(response) {
@@ -37,17 +33,22 @@ const selectionnerVille = (event) =>{
         pays.innerHTML=  " "+ data.city.country; 
         // définir la liste des jours
         let dataListe = new Array(data.list.slice(0,5));
-        //console.log(dataListe);
+        console.log(dataListe);
         //on boucle sur la météo des 5 jours
-       for(let i = 0; i <= dataListe.length ; i++){
-           let card = document.createElements('div'); 
-            météoDuJour.appendChild('card');
-            let tempMin = document.createElement('h3');
-            temp.innerHTML =dataListe+"."+[i]+"."+main.temp_min;
+        console.log( dataListe[0].length );
+       for(let i = 0; i < dataListe[0].length ; i++){
+        let meteoDuJour = document.createElement('div');
+        meteoDuJour.setAttribute("id", meteoDuJour);
+        meteo5j.appendChild(meteoDuJour);
+           let card = document.createElement('div'); 
+           meteoDuJour.appendChild(card);
+           let tempMin = document.createElement('h3');
+            tempMin.innerHTML += "Tem_Min : "+dataListe[0][i].main.temp_min;
             let tempMax = document.createElement('h3');
-            temp.innerHTML =dataListe[i].main.temp_max;
+            tempMax.innerHTML += "Temp_Max : "+ dataListe[0][i].main.temp_max;
             card.appendChild(tempMin);
-            card.appendChild(temp_max);
+            card.appendChild(tempMax);
+            
         } 
     })
     .catch(function(error){
