@@ -3,6 +3,7 @@ let inputRecherche = document.querySelector('#inputRecherche').value;
 let afficher = document.querySelector('#afficher');
 let maville = document.querySelector('#maville');
 let infoMaville = document.querySelector('#infoMaville');
+let meteo = document.querySelector('#meteo');
 let meteo5j = document.querySelector('#meteo5j');
 let lat = document.querySelector('#lat');
 let long = document.querySelector('#long');
@@ -35,19 +36,24 @@ const selectionnerVille = (event) =>{
         let dataListe = new Array(data.list.slice(0,5));
         console.log(dataListe);
         //on boucle sur la météo des 5 jours
-        console.log( dataListe[0].length );
        for(let i = 0; i < dataListe[0].length ; i++){
-        let meteoDuJour = document.createElement('div');
-        meteoDuJour.setAttribute("id", meteoDuJour);
-        meteo5j.appendChild(meteoDuJour);
-           let card = document.createElement('div'); 
-           meteoDuJour.appendChild(card);
-           let tempMin = document.createElement('h3');
-            tempMin.innerHTML += "Tem_Min : "+dataListe[0][i].main.temp_min;
-            let tempMax = document.createElement('h3');
+            let meteoDuJour = document.createElement('div');
+            meteoDuJour.setAttribute("id", "meteoDuJour");
+            meteo5j.appendChild(meteoDuJour);
+
+            let cloud = document.createElement('img');
+            cloud.src="dataListe[0][i].weather[0].icon"
+            meteoDuJour.appendChild(cloud);
+        
+            let tempMin = document.createElement('h5');
+            tempMin.innerHTML += "Temp_Min : "+dataListe[0][i].main.temp_min;
+            meteoDuJour.appendChild(tempMin);
+
+            let tempMax = document.createElement('h5');
             tempMax.innerHTML += "Temp_Max : "+ dataListe[0][i].main.temp_max;
-            card.appendChild(tempMin);
-            card.appendChild(tempMax);
+            meteoDuJour.appendChild(tempMax);
+
+             
             
         } 
     })
