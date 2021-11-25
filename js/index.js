@@ -15,7 +15,6 @@ let météoDuJour = document.querySelector('#météoDuJour');
  * fonction sélectionner ville
  */
 const selectionnerVille = (event) =>{
-    event.preventDefault()
    //let keyP =3a2ea38cb56c448cf5d6ee86eaa67cf5;
     
     let url ="https://api.openweathermap.org/data/2.5/forecast?q="+ inputRecherche +"&appid=97f55fd2ae2ca497a45766b111b0ff0e"
@@ -36,12 +35,14 @@ const selectionnerVille = (event) =>{
         lat.innerHTML= data.city.coord.lat; 
         long.innerHTML= data.city.coord.lon; 
         pays.innerHTML=  " "+ data.city.country; 
+
+        let dataListe = data.list.slice(0,5);
+        //console.log(dataliste );
         //on boucle sur la météo des 5 jours
-        
-        for(let i = 0; i <= data.list[4].length; i++){
-           console.log("data.list"+[i]);
-           /* let div = document.createElements('div'); 
-            div.document.s
+       for(let i = 0; i <= dataListe.length ; i++){
+           console.log("datalist"+[i]);
+          /* let div = document.createElements('div'); 
+            div.document.
             météoDuJour.appendChild()*/
          
         } 
