@@ -42,7 +42,7 @@ const selectionnerVille = (event) =>{
             meteo5j.appendChild(meteoDuJour);
 
             let cloud = document.createElement('img');
-            cloud.src="dataListe[0][i].weather[0].icon"
+            cloud.src="http://openweathermap.org/img/wn/"+dataListe[0][i].weather[0].icon+".png";
             meteoDuJour.appendChild(cloud);
         
             let tempMin = document.createElement('h5');
