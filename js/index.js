@@ -35,16 +35,19 @@ const selectionnerVille = (event) =>{
         lat.innerHTML= data.city.coord.lat; 
         long.innerHTML= data.city.coord.lon; 
         pays.innerHTML=  " "+ data.city.country; 
-
-        let dataListe = data.list.slice(0,5);
-        //console.log(dataliste );
+        // définir la liste des jours
+        let dataListe = new Array(data.list.slice(0,5));
+        //console.log(dataListe);
         //on boucle sur la météo des 5 jours
        for(let i = 0; i <= dataListe.length ; i++){
-           console.log("datalist"+[i]);
-          /* let div = document.createElements('div'); 
-            div.document.
-            météoDuJour.appendChild()*/
-         
+           let card = document.createElements('div'); 
+            météoDuJour.appendChild('card');
+            let tempMin = document.createElement('h3');
+            temp.innerHTML =dataListe+"."+[i]+"."+main.temp_min;
+            let tempMax = document.createElement('h3');
+            temp.innerHTML =dataListe[i].main.temp_max;
+            card.appendChild(tempMin);
+            card.appendChild(temp_max);
         } 
     })
     .catch(function(error){
