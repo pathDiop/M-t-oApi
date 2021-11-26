@@ -14,7 +14,7 @@ let pays = document.querySelector('#pays');
 const selectionnerVille = (event) =>{
    //let keyP =3a2ea38cb56c448cf5d6ee86eaa67cf5;
     
-    let url ="https://api.openweathermap.org/data/2.5/forecast?q="+ inputRecherche +" &units=metric&appid=97f55fd2ae2ca497a45766b111b0ff0e"
+    let url ="https://api.openweathermap.org/data/2.5/forecast?q="+ inputRecherche +" &units=metric&appid=ae3e8b28d061817c1890064e35ccfe46"
     console.log("c'est good");
     fetch(url)
     .then(function(response) {
@@ -41,16 +41,38 @@ const selectionnerVille = (event) =>{
             meteoDuJour.setAttribute("id", "meteoDuJour");
             meteo5j.appendChild(meteoDuJour);
 
+            //affichage de la date
+            let dateDuJour = document.createElement('span');
+            let datej =new Date(dataListe[0][i].dt *1000);
+            // datej retiurne un chiffre et j'affiche le jour correspondant dans mon tableau semaine
+            let semaine = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"]
+            dateDuJour.innerHTML=semaine[datej.getDay()];
+            meteoDuJour.appendChild(dateDuJour);
+            
+
+            //affichage de l'mage 
             let cloud = document.createElement('img');
             cloud.src="http://openweathermap.org/img/wn/"+dataListe[0][i].weather[0].icon+".png";
             meteoDuJour.appendChild(cloud);
         
+            //affichage de la description
+            let etat = document.createElement('h5');
+            etat.innerHTML = dataListe[0][i].weather[0].main;
+            meteoDuJour.appendChild(etat);
+
+             //affichage de la description détaillée
+             let description = document.createElement('h5');
+             description.innerHTML = dataListe[0][i].weather[0].description;
+             meteoDuJour.appendChild(description);
+
+            //affichage de la température minimale
             let tempMin = document.createElement('h5');
-            tempMin.innerHTML += "Temp_Min : "+dataListe[0][i].main.temp_min;
+            tempMin.innerHTML += " _Min : "+Math.round(dataListe[0][i].main.temp_min) +"  °c";
             meteoDuJour.appendChild(tempMin);
 
+            //affichage de la température maximale
             let tempMax = document.createElement('h5');
-            tempMax.innerHTML += "Temp_Max : "+ dataListe[0][i].main.temp_max;
+            tempMax.innerHTML += " _Max : "+ Math.round(dataListe[0][i].main.temp_max)+"  °c";
             meteoDuJour.appendChild(tempMax);
 
              
